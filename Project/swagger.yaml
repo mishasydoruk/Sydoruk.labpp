@@ -5,7 +5,7 @@ info:
   contact:
     email: mishagrygor@gmail.com
   version: 1.0.0
-
+  
 tags:
 - name: song
   description: Everything about your song
@@ -13,7 +13,7 @@ tags:
   description: Access to songs in current playlist
 - name: user
   description: Operations about user
-
+  
 paths:
   /song/{song}:
     post:
@@ -28,7 +28,7 @@ paths:
         required: true
         schema:
           type: object
-
+        
       requestBody:
         content:
           application/json:
@@ -139,7 +139,7 @@ paths:
       - songstore_auth:
         - write:songs
         - read:songs
-
+  
   /playlist:
     post:
       tags:
@@ -159,9 +159,9 @@ paths:
           description: successful operation
           content: {}
       x-codegen-request-body-name: body
-
+    
   /playlist/{playlistName}:
-    post:
+    delete:
       tags:
       - playlist
       summary: Delete playlist
@@ -188,7 +188,7 @@ paths:
           content: {}
       security:
       - api_key: []
-
+      
   /playlist/findByName/{playlistName}:
     get:
       tags:
@@ -216,9 +216,9 @@ paths:
           description: Song not found
       security:
       - api_key: []
-
-
-  /playlist/{songName}:
+      
+      
+  /playlist/addSongInPlaylist{songName}:
     put:
       tags:
       - playlist
@@ -245,7 +245,7 @@ paths:
           description: Song not found
       security:
       - api_key: []
-
+  
   /playlist/removeSongByName/{songName}:
     put:
       tags:
@@ -260,7 +260,7 @@ paths:
         schema:
           type: integer
           format: int64
-
+          
       responses:
         200:
           description: successful operation
@@ -276,7 +276,7 @@ paths:
       security:
       - api_key: []
 
-
+    
   /user:
     post:
       tags:
@@ -387,7 +387,7 @@ paths:
         404:
           description: User not found
           content: {}
-
+          
 components:
   schemas:
     Playlist:
@@ -405,7 +405,7 @@ components:
             format: int64
         isPublic:
           type: boolean
-
+        
     User:
       type: object
       properties:
@@ -444,7 +444,7 @@ components:
         author:
           type: string
           example: Samanta Jade
-
+        
   securitySchemes:
     songstore_auth:
       type: oauth2
