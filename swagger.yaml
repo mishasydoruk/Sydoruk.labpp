@@ -5,7 +5,6 @@ info:
   contact:
     email: mishagrygor@gmail.com
   version: 1.0.0
-
 tags:
 - name: song
   description: Everything about your song
@@ -13,7 +12,6 @@ tags:
   description: Access to songs in current playlist
 - name: user
   description: Operations about user
-
 paths:
   /song/{song}:
     post:
@@ -28,7 +26,6 @@ paths:
         required: true
         schema:
           type: object
-
       requestBody:
         content:
           application/json:
@@ -139,7 +136,6 @@ paths:
       - songstore_auth:
         - write:songs
         - read:songs
-
   /playlist:
     post:
       tags:
@@ -161,7 +157,8 @@ paths:
       x-codegen-request-body-name: body
 
   /playlist/{playlistName}:
-    post:
+    delete:
+
       tags:
       - playlist
       summary: Delete playlist
@@ -216,9 +213,7 @@ paths:
           description: Song not found
       security:
       - api_key: []
-
-
-  /playlist/{songName}:
+  /playlist/addSongInPlaylist{songName}:
     put:
       tags:
       - playlist
@@ -458,3 +453,4 @@ components:
       type: apiKey
       name: api_key
       in: header
+
