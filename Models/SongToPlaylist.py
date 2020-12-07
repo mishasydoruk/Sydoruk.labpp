@@ -8,15 +8,14 @@ with open("./config.cfg",'r',encoding="utf-8") as config:
 engine = create_engine(connection_string, echo=True)
 Base = declarative_base()
 
-class Playlist(Base):
+class SongToPlaylist(Base):
     __tablename__ = 'playlists'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    is_public = Column(Boolean)
+    song_id = Column(Integer)
+    plyalist_id = Column(Integer)
 
-    def __init__(self, name, is_public):
-        self.name = name
-        self.is_public = is_public
+    def __init__(self, song_id, playlist_id):
+        self.song_id = song_id
+        self.playlist_id = playlist_id
 
 
 

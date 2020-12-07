@@ -14,14 +14,12 @@ class User(Base):
     last_name = Column(String)
     email = Column(String)
     password = Column(String)
-    playlists_id = Column(ARRAY(Integer))
 
-    def __init__(self, username, first_name, last_name, email, playlists_id, password):
+    def __init__(self, username, first_name, last_name, email, password):
         self.username = username
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
-        self.playlists_id = playlists_id
         self.password = password
 
 
